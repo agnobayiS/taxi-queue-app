@@ -9,50 +9,41 @@ const line = document.querySelector(".join_taxi_queue");
 
 const leaving = document.querySelector(".depart");
 
+let data = localStorage.getItem("key") ? JSON.parse(localStorage.getItem("key")) : []
+const taxiQueue = TaxiQueue();
 let int = 0;
 let inter = 0;
 
 // DOM element references
 add.addEventListener("click", function () {
-
-    int += 1;
-    counter.innerHTML = int;
+    
+    counter.innerHTML = taxiQueue.joinQueue()
 
 });
 remove.addEventListener("click", function () {
-    if (int >0){
-    int -= 1;
-    counter.innerHTML = int;
-    }
+
+        counter.innerHTML = taxiQueue.leaveQueue()
+    
 });
 line.addEventListener("click", function () {
 
-    inter += 1;
-    section.innerHTML = inter;
+     section.innerHTML = taxiQueue.joinTaxiQueue()
 
 });
 leaving.addEventListener("click", function () {
-    if (int >= 12 && inter > 0){
-    int -= 12;
-    inter -= 1
-    section.innerHTML = inter;
-    counter.innerHTML = int;
-    }
+    taxiQueue.taxiDepart()
+    counter.innerHTML = taxiQueue.queueLength()
+    section.innerHTML = taxiQueue.taxiQueueLength()
 
-
-
+    // if (int >= 12 && inter > 0){
+    //     int -= 12;
+    //     inter -= 1;
+    // section.innerHTML = inter;
+    // counter.innerHTML = int;
+    // }
 });
 
 
 
 
-decrement.addEventListener("click", function () {
-
-
-});
-// create Factory Function instance
-
-const taxiQueue = TaxiQueue();
-
-// DOM events
 

@@ -1,28 +1,35 @@
 function TaxiQueue() {
-	let firstCount = 0;
-	let secondcounter = 0;
+	let int = 0;
+	let inter = 0;
 
 	function joinQueue() {
-		 return firstCount += 1;
+		return int += 1;
 	}
 
 	function leaveQueue() {
-		// return _counter-= 1;
+		if (int > 0) {
+			return int -= 1;
+		}
+
 	}
 
 	function joinTaxiQueue() {
-		// return _counter++
+		return inter += 1
 	}
 
 	function queueLength() {
-		// return _counter.length
+		return int
 	}
 
 	function taxiQueueLength() {
-
+		return inter
 	}
 
 	function taxiDepart() {
+		if (int >= 12 && inter > 0) {
+			int -= 12;
+			inter -= 1;
+		}
 
 	}
 
